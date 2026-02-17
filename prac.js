@@ -13,16 +13,16 @@ function addExpense(title, amount, category) {
 }
 
 function printAllExpenses() {
-  expenses.forEach((e) => {
-    console.log(`${e.id}. ${e.title} — ${e.amount}₽ (${e.category})`);
+  expenses.forEach((i) => {
+    console.log(`${i.id}. ${i.title} — ${i.amount}₽ (${i.category})`);
   });
 }
 
 function getTotalAmount() {
   let total = 0;
 
-  expenses.forEach((e) => {
-    total += e.amount;
+  expenses.forEach((i) => {
+    total += i.amount;
   });
 
   console.log("Общая сумма расходов:", total + "₽");
@@ -30,34 +30,33 @@ function getTotalAmount() {
 }
 
 function getExpensesByCategory(category) {
-  let filtered = expenses.filter((e) => e.category === category);
+  let filtered = expenses.filter((i) => i.category === category);
 
   let total = 0;
-  filtered.forEach((e) => {
-    total += e.amount;
+  filtered.forEach((i) => {
+    total += i.amount;
   });
 
   console.log(`Потрачено на "${category}":`, total + "₽");
   return filtered;
 }
 
-
 function findExpenseByTitle(text) {
-  return expenses.find((e) => e.title.includes(text));
+  return expenses.find((i) => i.title.includes(text));
 }
 
 function deleteExpenseById(id) {
-  expenses = expenses.filter((e) => e.id !== id);
+  expenses = expenses.filter((i) => i.id !== id);
 }
 
 function printCategoryStats() {
   let stats = {};
 
-  expenses.forEach((e) => {
-    if (!stats[e.category]) {
-      stats[e.category] = 0;
+  expenses.forEach((i) => {
+    if (!stats[i.category]) {
+      stats[i.category] = 0;
     }
-    stats[e.category] += e.amount;
+    stats[i.category] += i.amount;
   });
 
   console.log("Статистика по категориям:");
